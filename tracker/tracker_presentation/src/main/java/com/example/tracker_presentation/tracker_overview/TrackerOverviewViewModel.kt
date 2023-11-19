@@ -79,6 +79,8 @@ class TrackerOverviewViewModel @Inject constructor(
                     }
                 )
             }
+
+            else -> {}
         }
     }
 

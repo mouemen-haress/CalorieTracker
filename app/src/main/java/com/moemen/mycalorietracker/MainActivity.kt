@@ -7,6 +7,12 @@ import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -35,8 +41,7 @@ class MainActivity : ComponentActivity() {
                 val scaffoldState = rememberScaffoldState()
 
                 Scaffold(
-                    modifier = Modifier.fillMaxSize(),
-                    scaffoldState = scaffoldState
+                    modifier = Modifier.fillMaxSize(), scaffoldState = scaffoldState
                 ) {
                     NavHost(navController = navController, startDestination = Route.WELCOME) {
                         composable(Route.WELCOME) {
@@ -50,20 +55,17 @@ class MainActivity : ComponentActivity() {
                         }
                         composable(Route.HEIGHT) {
                             HeightScreen(
-                                scaffoldState = scaffoldState,
-                                onNavigate = navController::navigate
+                                scaffoldState = scaffoldState, onNavigate = navController::navigate
                             )
                         }
                         composable(Route.WEIGHT) {
                             WeightScreen(
-                                scaffoldState = scaffoldState,
-                                onNavigate = navController::navigate
+                                scaffoldState = scaffoldState, onNavigate = navController::navigate
                             )
                         }
                         composable(Route.NUTRIENT_GOAL) {
                             NutrientGoalScreen(
-                                scaffoldState = scaffoldState,
-                                onNavigate = navController::navigate
+                                scaffoldState = scaffoldState, onNavigate = navController::navigate
                             )
                         }
 
@@ -76,7 +78,6 @@ class MainActivity : ComponentActivity() {
 
 
                         composable(Route.TRACKER_OVERVIEW) {
-
                         }
 
                         composable(Route.SEARCH) {
@@ -89,6 +90,9 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+
+
+
 
 //@Composable
 //fun Greeting(name: String) {
