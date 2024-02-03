@@ -5,6 +5,7 @@ import androidx.room.Room
 import com.example.tracker_data.remote.OpenFoodApi
 import com.example.tracker_data.repository.TrackerRepoImp
 import com.example.tracker_domain.repository.TrackerRepository
+import com.moemen.core.util.AppInterceptor
 import com.moemen.tracker_data.local.TrackerDatabase
 import dagger.Module
 import dagger.Provides
@@ -23,13 +24,20 @@ object TrackerDataModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClient(): OkHttpClient {
+    fun provideAppInterceptor(): AppInterceptor {
+        return AppInterceptor()
+    }
+
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(appInterceptor: AppInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .addInterceptor(
                 HttpLoggingInterceptor().apply {
                     level = HttpLoggingInterceptor.Level.BODY
                 }
-            )
+            ).addInterceptor(appInterceptor)
             .build()
     }
 

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moemen.core.domain.preferences.Preferences
 import com.moemen.core.domain.use_case.FilterOutDigits
-import com.moemen.core.navigation.Route
 import com.moemen.core.util.UiEvent
 import com.moemen.core.util.UiText
 import com.moemen.core.R
@@ -46,7 +45,7 @@ class HeightViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveHeight(heightNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.WEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

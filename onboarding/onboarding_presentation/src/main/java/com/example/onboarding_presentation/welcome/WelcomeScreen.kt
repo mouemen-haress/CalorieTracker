@@ -13,16 +13,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
-import androidx.compose.ui.unit.dp
 import com.example.onboarding_presentation.components.ActionButton
-import com.moemen.core.navigation.Route
 import com.moemen.core.util.UiEvent
-import com.moemen.onboarding_presentation.R
 import com.mouemen.core_ui.LocalSpacing
 
 
 @Composable
-fun welcomeScreen(onNavigate: (UiEvent.Navigate) -> Unit) {
+fun WelcomeScreen(onNextClick: () -> Unit) {
     val spacing = LocalSpacing.current
     Column(
         modifier = Modifier
@@ -39,7 +36,7 @@ fun welcomeScreen(onNavigate: (UiEvent.Navigate) -> Unit) {
         Spacer(modifier = Modifier.height(spacing.spaceMedium))
         ActionButton(
             text = stringResource(id = com.moemen.core.R.string.next),
-            onclick = { onNavigate(UiEvent.Navigate(Route.GENDER)) },
+            onclick = { onNextClick() },
             modifier = Modifier.align(Alignment.CenterHorizontally)
         )
 

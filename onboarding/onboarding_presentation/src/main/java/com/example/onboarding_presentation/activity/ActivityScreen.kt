@@ -20,14 +20,14 @@ import com.mouemen.core_ui.LocalSpacing
 
 @Composable
 fun ActivityScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: (UiEvent.Success) -> Unit,
     viewModel: ActivityViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect { event ->
             when (event) {
-                is UiEvent.Navigate -> onNavigate(event)
+                is UiEvent.Success -> onNextClick(event)
                 else -> Unit
             }
         }

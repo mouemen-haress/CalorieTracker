@@ -19,7 +19,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.ViewModel
 import com.example.onboarding_presentation.components.ActionButton
 import com.example.onboarding_presentation.components.SelectableButton
 import com.moemen.core.util.UiEvent
@@ -27,18 +26,17 @@ import com.moemen.core.R
 import com.moemen.core.domain.model.Gender
 
 import com.mouemen.core_ui.LocalSpacing
-import kotlinx.coroutines.flow.collect
 
 @Composable
 fun GenderScreen(
-    onNavigate: (UiEvent.Navigate) -> Unit,
+    onNextClick: () -> Unit,
     viewModel: GenderViewModel = hiltViewModel()
 ) {
     val spacing = LocalSpacing.current
     LaunchedEffect(key1 = true) {
         viewModel.uiEvent.collect {
             when (it) {
-                is UiEvent.Navigate -> onNavigate(it)
+                is UiEvent.Success -> onNextClick()
                 else -> Unit
             }
         }

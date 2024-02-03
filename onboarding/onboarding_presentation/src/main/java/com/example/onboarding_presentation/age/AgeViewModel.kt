@@ -6,7 +6,6 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.moemen.core.domain.preferences.Preferences
-import com.moemen.core.navigation.Route
 import com.moemen.core.util.UiEvent
 import com.moemen.core.R
 import com.moemen.core.domain.use_case.FilterOutDigits
@@ -48,7 +47,7 @@ class AgeViewModel @Inject constructor(
                 return@launch
             }
             preferences.saveAge(ageNumber)
-            _uiEvent.send(UiEvent.Navigate(Route.HEIGHT))
+            _uiEvent.send(UiEvent.Success)
         }
     }
 }

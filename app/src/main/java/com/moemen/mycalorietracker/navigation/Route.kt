@@ -1,4 +1,4 @@
-package com.moemen.core.navigation
+package com.moemen.mycalorietracker.navigation
 
 object Route {
     const val WELCOME = "welcome"

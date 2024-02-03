@@ -1,4 +1,4 @@
-package com.moemen.core.domain
+package com.moemen.core.data.preferences
 
 import android.content.SharedPreferences
 import com.moemen.core.domain.model.ActivityLevel
