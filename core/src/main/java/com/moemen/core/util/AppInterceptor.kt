@@ -10,7 +10,12 @@ class AppInterceptor() : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         // Add the token to the request header
         val request = chain.request()
-
+        request?.let {
+            Log.e(
+                "apiTag",
+                "request to - >  ${it.url}  \n\n request Body is : ${it.body}"
+            )
+        }
 
 
         val builder = request.newBuilder()
